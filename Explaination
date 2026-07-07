@@ -1,0 +1,188 @@
+
+
+
+---
+
+Cross-Exchange Futures Arbitrage System (Binance & Bitget)
+
+Project Overview
+
+This project is a fully automated Python-based cross-exchange futures arbitrage trading system. It continuously monitors the price of the same cryptocurrency futures contract on Binance Futures and Bitget Futures. Whenever it detects a significant price difference between the two exchanges, it automatically opens opposite positions on each exchange to profit from the expected price convergence while minimizing overall market risk. 
+
+
+---
+
+Objective
+
+The primary objective of this project is to automate the process of detecting and executing arbitrage opportunities between cryptocurrency futures exchanges. Instead of relying on manual monitoring, the bot performs the entire workflow automatically, including market analysis, order execution, risk management, and trade monitoring. 
+
+
+---
+
+Technologies Used
+
+Python
+
+Binance Futures API
+
+Bitget Futures API
+
+REST API Communication
+
+HMAC SHA-256 Authentication
+
+Decimal Module for High Precision Calculations
+
+Telegram Bot API
+
+JSON
+
+Requests Library
+
+
+
+
+
+---
+
+Working Principle
+
+1. Exchange Connection
+
+The program securely connects to both Binance Futures and Bitget Futures using authenticated API keys. It creates the required digital signatures for Bitget requests and establishes communication with both exchanges. 
+
+
+---
+
+2. Live Market Monitoring
+
+Every three seconds the bot fetches the latest futures price of the selected cryptocurrency from both exchanges.
+
+It continuously compares:
+
+Binance Futures Price
+
+Bitget Futures Price
+
+
+This allows the system to identify temporary price differences between exchanges. 
+
+
+---
+
+3. Arbitrage Opportunity Detection
+
+The software calculates the percentage difference (Gap) using:
+
+Gap (%) = ((Bitget Price − Binance Price) ÷ Binance Price) × 100
+
+If the calculated gap exceeds the predefined threshold (0.3%), the bot considers it a profitable arbitrage opportunity. 
+
+
+---
+
+4. Automated Trade Execution
+
+The bot automatically performs opposite trades on both exchanges.
+
+If Bitget price is higher:
+
+Buy (Long) on Binance Futures
+
+Sell (Short) on Bitget Futures
+
+
+If Binance price is higher:
+
+Sell (Short) on Binance Futures
+
+Buy (Long) on Bitget Futures
+
+
+This strategy attempts to capture the price difference while reducing exposure to the overall market direction. 
+
+
+---
+
+5. Position Management
+
+The system constantly monitors all active positions.
+
+When prices converge or the gap reverses beyond the configured threshold, it automatically closes both positions to complete the arbitrage cycle and prepare for the next opportunity. 
+
+
+---
+
+6. Risk Management
+
+Several safety mechanisms are implemented:
+
+Checks available USDT balance before trading
+
+Uses a fixed trade amount
+
+Prevents duplicate positions
+
+Automatically closes partially executed trades if one side fails
+
+Validates API connectivity before operation
+
+Uses retry mechanisms for network failures
+
+
+These features improve system reliability and reduce operational risk. 
+
+
+---
+
+7. Telegram Notification System
+
+The project integrates a Telegram Bot that sends real-time notifications whenever:
+
+A price gap is detected
+
+A trade is executed
+
+A trade fails
+
+Positions are closed
+
+Errors occur
+
+
+This allows the user to monitor the trading system remotely without constantly checking the exchanges. 
+
+
+---
+
+Main Features
+
+Fully automated trading system
+
+Real-time price monitoring
+
+Cross-exchange arbitrage
+
+Automatic order execution
+
+Position management
+
+Balance verification
+
+Error handling
+
+API authentication
+
+Telegram alerts
+
+High-precision financial calculations
+
+
+
+
+
+---
+
+Conclusion
+
+This project demonstrates the practical application of Python programming, financial market analysis, API integration, automation, and software engineering. By continuously monitoring two cryptocurrency futures exchanges and automatically executing arbitrage trades, the system showcases how technology can identify and act on short-lived market inefficiencies with minimal manual intervention. It serves as an educational example of automated algorithmic trading and highlights concepts such as real-time data processing, secure API communication, risk management, and event-driven programming. 
